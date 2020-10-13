@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'inicial/css/style_inicial.css'%}">
+    <!-- Page Content -->
+    <div class="conteudo">
+        
+        <!-- Criando as Seções -->
+        <h1>Quem Somos</h1>
+        <p>
+            Somos um projeto que ama animais, por isso nosso bem estar é cuidar e oferecer serviços para eles.
+        </p>
+
+        <h1>História</h1>
+            <p>
+               Nescemos como um projeto da ferramenta Django, estamos abertos para expansão.
+            </p>
+            <!-- Inserindo as imagens referebntes aos hobbies -->
+            <img src="{% static 'inicial/images/gato1.jpg'%}" width="300" height="300">
+            <img src="{% static 'inicial/images/cachorro1.jpg'%}" width="300" height="300">
+            <img src="{% static 'inicial/images/papagaio1.jpg'%}" width="300" height="300">
+            <img src="{% static 'inicial/images/gato2.jpg'%}" width="300" height="300">
+            <img src="{% static 'inicial/images/cachorro2.jpg'%}" width="300" height="300">
+
+        <h1></h1>
+            <p>
+                Se possível, convidamos vocês a olharem o Github de nosso desenvolvedor. <a href="https://github.com/thiagosouzalink" target="_blank">Thiago Souza</a>.
+            </p>
+            
+            <p>
+                Oferecemos serviços de: 
+                <ul>
+                    <li>Cachorro</li>
+                    <li>Gato</li>
+                    <li>Papagaio</li>
+                    <li>E outros animais</li>
+                </ul> 
+                <img src="{% static 'inicial/images/gato3.jpg'%}" width="300" height="300">
+            </p>
+    
+    </div>
+  {% endblock %}

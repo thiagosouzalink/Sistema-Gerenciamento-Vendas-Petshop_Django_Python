@@ -1,0 +1,23 @@
+/* Estilizar a div conteúdo */
+.conteudo { 
+    width: 80%;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 14pt;
+    text-align: center;
+    font-family: Times;
+    background: rgba(28, 28, 28, 0.6);
+    color: white;
+}
+
+/* Estiliza as imagens */
+img {
+    width: 200px;
+    height: 200px;
+    border: solid;
+    padding: 8px;
+}

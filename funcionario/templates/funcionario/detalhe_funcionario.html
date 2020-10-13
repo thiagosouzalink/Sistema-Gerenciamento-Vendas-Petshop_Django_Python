@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-12">
+            <h1 class="mt-5">{{ funcionario.nome }} {{ funcionario.sobrenome }}</h1>
+            <dl>
+                <dt>ID</dt>
+                <dd>{{ funcionario.id }}</dd>
+
+                <dt>Cargo</dt>
+                <dd>{{ funcionario.cargo }}</dd>
+
+                <dt>E-mail</dt>
+                <dd>{{ funcionario.email }}</dd>
+            </dl>
+        </div>
+        </div>
+
+        {% if user.is_authenticated %}
+            <a href="{{ funcionario.get_absolute_url }}"><button type="text" class="btn btn-secondary">Atualizar</button></a>
+        {% endif %}
+    </div>
+{% endblock %}

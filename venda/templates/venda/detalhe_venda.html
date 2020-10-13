@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-12">
+            <h1 class="mt-5">Venda ID: {{ venda.id }}</h1>
+            <dl>
+                <dt>Cliente</dt>
+                <dd>{{ venda.cliente }}</dd>
+
+                <dt>Funcionário</dt>
+                <dd>{{ venda.funcionario }}</dd>
+
+                <dt>Animal</dt>
+                <dd>{{ venda.animal }}</dd>
+
+                <dt>Data da Venda</dt>
+                <dd>R${{ venda.data_venda|date:'d/m/Y' }}</dd>
+
+                <dt>Preço</dt>
+                <dd>R${{ venda.preco }}</dd>
+            </dl>
+        </div>
+        </div>
+
+        {% if user.is_authenticated %}
+            <a href="{{ venda.get_absolute_url }}"><button type="text" class="btn btn-secondary">Atualizar</button></a>
+        {% endif %}
+    </div>
+{% endblock %}

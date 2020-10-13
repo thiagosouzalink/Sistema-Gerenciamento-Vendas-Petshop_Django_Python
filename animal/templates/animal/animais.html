@@ -1,0 +1,68 @@
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-12">
+            {% if user.is_authenticated %}
+                <a href="{% url 'inserir-animal' %}"><button type="text" class="btn btn-info" style="margin-top: 3%;">Novo Cadastro</button></a>
+            {% endif %}
+            <h1 class="mt-5">Animais</h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Espécie</th>
+                        <th>Sexo</th>
+                        <th>Data de Nascimento</th>
+                        <th>Preço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for animal in animais %}
+                        {% if animal.mostrar %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'detalhe_animal' animal.id %}">{{ animal.id }}</a>
+                                </td>
+                                <td>
+                                    <a href="{% url 'detalhe_animal' animal.id %}">{{ animal.especie }}</a>
+                                </td>
+                                <td>{{ animal.sexo }}</td>
+                                <td>{{ animal.data_nascimento|date:'d/m/Y' }}</td>
+                                <td>R${{ animal.preco }}</td>
+                                {% if user.is_authenticated %}
+                                    <form action="{{ animal.get_delete_url }}" method="post"> {% csrf_token %}
+                                        <td><button type="submit" class="btn btn-secondary">Excluir</button></td>
+                                    </form>
+                                {% endif %}  
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                {% for pagina in animais.paginator.page_range %}
+                    {% if animais.number == pagina %}
+                        <li class="page-item active">
+                            <a class="page-link" href="?p={{ pagina }}">{{ pagina }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?p={{ pagina }}">{{ pagina }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                </ul>
+              </nav>
+
+        </div>
+        </div>
+    </div>
+  {% endblock %}

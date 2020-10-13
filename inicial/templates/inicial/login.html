@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'inicial/css/login.css' %}">
+
+<div class="d-flex flex-column">
+   <div class="sidenav" style="top: auto;">
+      <div class="login-main-text">
+         <h2>Nosso Petshop<br>Loja de Petshop</h2>            
+      </div>
+   </div>
+        <div class="main">
+           <div class="col-md-6 col-sm-12">
+              <div class="login-form" style="margin-top: 20%;">
+                 <form action="submit", method="POST">{% csrf_token %}
+                    <div class="form-group">
+                       <label>Usuário</label>
+                       <input type="text" class="form-control" placeholder="Usuário" name="username">
+                    </div>
+                    <div class="form-group">
+                       <label>Senha</label>
+                       <input type="password" class="form-control" placeholder="Senha" name="password">
+                    </div>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {% endfor %}
+  
+                    {% endif %}
+                    <button type="submit" class="btn btn-black">Login</button>                 
+                 </form>
+              </div>
+           </div>
+        </div>
+    </div>
+{% endblock %}
